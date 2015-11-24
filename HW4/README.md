@@ -7,7 +7,6 @@ In this homework assignment, you'll get to practice several common architectural
 1. To Build the image
 
 
-
     * docker build -t "hw4"
     
 2. Mapping file access to read file container using SOCAT
