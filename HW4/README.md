@@ -4,44 +4,37 @@ In this homework assignment, you'll get to practice several common architectural
 #### File I/O
 ###### You want to create a container for a legacy application. You succeed, but you need access to a file that the legacy app creates
 
-1. To Build the image
+To Build the image
 
-
-    *docker build -t "hw4"
+    * docker build -t "hw4"
     
-2. Mapping file access to read file container using SOCAT
-
+Mapping file access to read file container using SOCAT
 
     * sudo docker run -td --name server hw4
     * sudo docker exec -td server sh -c "echo 'Hello World'>/Hello.txt"
     * sudo docker exec -it server bash
     * socat tcp-l:9001,reuseaddr,fork system:'cat /Hello.txt',nofork
 
-3. Linked container to the server container
-
+Linked container to the server container
 
     * sudo docker run -td --name client -h client --link server:server hw4
 
-4. To get inside the client container
-
+To get inside the client container
 
     * sudo docker exec -it client bash
     
-5. Get the content of the file out.txt located in server containerr
-
+Get the content of the file out.txt located in server containerr
 
     * curl server:900    
 
 #### Ambassador Pattern
 ###### Implement the remote ambassador pattern to encapsulate access to a redis container by a container on a different host.
 
-1. Install docker-compose on both DO Droplets
+Install docker-compose on both DO Droplets
 
-
-     * docker compose up
+       * docker compose up
     
-2. Confirm that the redis server is up 
-
+Confirm that the redis server is up 
 
      * docker run -t -i --rm --link redis:redis relateiq/redis-cli
      * redis 172.17.0.136:6379> ping
@@ -49,8 +42,7 @@ In this homework assignment, you'll get to practice several common architectural
    
 
 
-3. Run the redis CLI as client this same droplet
-
+Run the redis CLI as client this same droplet
 
     * docker run -i -t --rm --link redis-ambassador:redis relateiq/redis-cli
     * ping
