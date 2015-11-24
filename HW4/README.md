@@ -3,9 +3,8 @@
 #### Socat for File I/O
 
 1. To Build the image    
-   
-
-     docker build -t "hw4" .
+   	
+	docker build -t "hw4" .
     
 2. Mapping file access to read file container using SOCAT
 
