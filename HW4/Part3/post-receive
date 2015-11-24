@@ -1,0 +1,9 @@
+#!/bin/sh
+GIT_WORK_TREE=/home/devops/DevOps-Homework/HW4/Docker-Deploy/Deployment/deploy/green-www/ git checkout -f
+sudo docker build -t "greenimage" /home/devops/DevOps-Homework/HW4/Docker-Deploy/Deployment/deploy/green-www/
+sudo docker tag greenimage localhost:5000/greennew:latest
+sudo docker push localhost:5000/greennew:latest
+sudo docker pull localhost:5000/greennew:latest
+sudo docker stop green
+sudo docker rm green
+sudo docker run -td --name green -p 3001:8080 greenimage sh -c "node /src/main.js 8080"
